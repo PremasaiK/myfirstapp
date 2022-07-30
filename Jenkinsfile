@@ -21,6 +21,12 @@ node {
     }
 
     stage('K8S Deploy') {
+          withKubeConfig([credentialsId: 'PremasaiK',
+                    serverUrl: 'https://4D8697AE3FBC2C2C654CBA6F2328FE3E.gr7.us-east-1.eks.amazonaws.com',
+                    contextName: 'arn:aws:eks:us-east-1:849654891981:cluster/master',
+                    clusterName: 'arn:aws:eks:us-east-1:849654891981:cluster/master'
+                    ]) {
          sh 'kubectl apply -f spring-boot.yaml'  
-            }       
+            }    
+    }
 }
