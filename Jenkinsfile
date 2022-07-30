@@ -26,4 +26,5 @@ node {
                     ]) {
          sh 'kubectl apply -f spring-boot.yaml'  
             }    
+  }
 }
