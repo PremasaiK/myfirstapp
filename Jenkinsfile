@@ -14,11 +14,11 @@ node {
        app = docker.build("springboot")
     }
 
-    stage('Push image to ecr') {
+ /*   stage('Push image to ecr') {
         docker.withRegistry('https://849654891981.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:PremasaiK') {
             app.push("${env.BUILD_NUMBER}")
         }
-    }
+    } */
 
   stage('K8S Deploy') {
          sh 'kubectl apply -f spring-boot.yaml'  
