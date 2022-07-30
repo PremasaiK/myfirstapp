@@ -20,9 +20,7 @@ node {
         }
     }
 
-    stage('K8S Deploy') {
-          withAWS([credentialsId: 'PremasaiK']) {
+  stage('K8S Deploy') {
          sh 'kubectl apply -f spring-boot.yaml'  
             }    
-    }
 }
