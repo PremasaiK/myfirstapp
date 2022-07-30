@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: spring-boot-app
+  name: springboot
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: spring-boot-app
+      app: springboot
   template:
     metadata:
       labels:
-        app: spring-boot-app
+        app: springboot
     spec:
       containers:
-      - name: spring-boot-app
-        image: gcr.io/<project-id>/springboot:7
+      - name: springboot
+        image: 849654891981.dkr.ecr.us-east-1.amazonaws.com/springboot:8
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
@@ -26,7 +26,7 @@ metadata:
   name: spring-boot-svc
 spec:
   selector:
-    app: spring-boot-app
+    app: springboot
   ports:
     - protocol: TCP
       port: 8080
