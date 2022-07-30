@@ -15,7 +15,7 @@ node {
     }
 
     stage('Push image to ecr') {
-        docker.withRegistry('https://849654891981.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:ecrepo') {
+        docker.withRegistry('https://849654891981.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:PremasaiK') {
             app.push("${env.BUILD_NUMBER}")
         }
     }
