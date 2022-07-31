@@ -14,17 +14,15 @@ node {
        app = docker.build("springboot")
     }
 
- /*   stage('Push image to ecr') {
+    stage('Push image to ecr') {
         docker.withRegistry('https://849654891981.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:PremasaiK') {
             app.push("${env.BUILD_NUMBER}")
+            app.push("latest")
         }
-    } */
+    } 
 
   stage('K8S Deploy') {
-    withKubeConfig([credentialsId: 'PremasaiKCLI',
-                    serverUrl: 'https://4D8697AE3FBC2C2C654CBA6F2328FE3E.gr7.us-east-1.eks.amazonaws.com'
-                    ]) {
          sh 'kubectl apply -f spring-boot.yaml'  
             }    
-  }
+  
 }
