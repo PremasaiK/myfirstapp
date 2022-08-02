@@ -22,7 +22,8 @@ node {
     } 
 
   stage('K8S Deploy') {
+        withKubeConfig([credentialsId: 'kubectl-user']) {
          sh 'kubectl apply -f spring-boot.yaml'  
             }    
-  
+  }
 }
