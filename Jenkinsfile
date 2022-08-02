@@ -21,7 +21,9 @@ node {
         }
     } 
 
-  stage('K8S Deploy')  {
-         sh 'kubectl apply -f spring-boot.yaml'  
-            }    
+  stage('K8S Deploy')  script {
+                withKubeConfig([credentialsId: 'kubeconfig', serverUrl: '']) {
+                sh ('kubectl apply -f  spring-boot.yaml')
+                }
+            }
 }
